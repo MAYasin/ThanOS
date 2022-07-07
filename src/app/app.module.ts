@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PopupComponent } from './components/popup/popup.component';
 import { ContextmenuComponent } from './components/contextmenu/contextmenu.component';
+import { TaskbarComponent } from './components/taskbar/taskbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PopupComponent,
-    ContextmenuComponent
+    ContextmenuComponent,
+    TaskbarComponent
   ],
   imports: [
     BrowserModule,
