@@ -1,46 +1,51 @@
-.contextmenu {
-    width: fit-content;
-    width: 250px; //333px
+:host {
+    width: max-content !important; //333px
     //height: 281px; //375px
-    background-color: rgba(54,54,54,0.4);
-    border-radius: 10px;
-    padding: 5px;
-    overflow: hidden;
 
-    .contextmenu-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 7px 0px 7px 7px;
-        border-radius: 5px;
-        background-color: transparent;
+    .contextmenu {
+        user-select: none;
+        width: 250px; //333px
+        //height: 281px; //375px
+        background-color: rgba(54, 54, 54, 0.8);
+        border-radius: 10px;
+        padding: 5px;
+        overflow: hidden;
 
-        &:hover {
-            background-color: rgba(255, 255, 255, 0.5);
-        }
+        .contextmenu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 7px 0px 7px 7px;
+            border-radius: 5px;
+            background-color: transparent;
 
-        .contextmenu-dropdownicon{
-            width: 22px;
-            margin-left: 10px;
-
-            .fa {
-                color: white;
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.1);
             }
-        }
 
-        .contextmenu-icon {
-            width: 22px;
-            margin-right: 10px;
+            .contextmenu-dropdownicon {
+                width: 22px;
+                margin-left: 10px;
 
-            .fa {
-                color: white;
+                .fa {
+                    color: white;
+                }
             }
-        }
 
-        .contextmenu-text {
-            color: white;
-            font-size: medium;
-            font-weight: 400;
+            .contextmenu-icon {
+                width: 22px;
+                margin-right: 10px;
+
+                .fa {
+                    color: white;
+                }
+            }
+
+            .contextmenu-text {
+                color: white;
+                font-size: medium;
+                font-weight: 400;
+            }
         }
     }
 }
