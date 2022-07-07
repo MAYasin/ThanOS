@@ -1,0 +1,179 @@
+/* :host {
+    display: block;
+    text-align: center;
+
+    button {
+        width: 100%;
+    }
+
+    .button-icon {
+        font-family: 'Material Icons Outlined';
+        line-height: 1rem;
+    }
+}
+
+:host[disabled='true'] {
+    button {
+        cursor: not-allowed;
+        @apply text-gray-300 #{!important} bg-gray-200 #{!important};
+
+        &:hover {
+            @apply bg-gray-200 #{!important};
+        }
+
+        &.btn-stroked {
+            @apply border-gray-300;
+        }
+    }
+}
+
+//Start of Styling
+:host[styling='raised'] {
+    button {
+        @apply shadow-lg;
+    }
+}
+
+:host[styling='flat'] {
+    button {
+        @apply shadow-lg;
+        @apply rounded-none #{!important};
+    }
+}
+
+:host[styling='stroked'] {
+    button {
+        @apply border-2;
+    }
+}
+
+:host[styling='stroked'][color='primary'] {
+    button {
+        @apply border-primary-dark;
+    }
+}
+
+:host[styling='stroked'][color='secondary'] {
+    button {
+        @apply border-secondary-dark;
+    }
+}
+
+:host[styling='stroked'][color='success'] {
+    button {
+        @apply border-green-800;
+    }
+}
+
+:host[styling='stroked'],
+:host[color='danger'] {
+    button {
+        @apply border-red-800;
+    }
+}
+
+:host[styling='stroked'][color='warning'] {
+    button {
+        @apply border-yellow-800;
+    }
+}
+
+:host[styling='stroked'][color='default'] {
+    button {
+        @apply border-gray-200;
+    }
+}
+
+//End of Styling
+//Start of Color
+:host[color='primary'] {
+    button {
+        @apply bg-primary text-white;
+
+        &:hover {
+            @apply bg-primary-dark;
+        }
+    }
+}
+
+:host[color='secondary'] {
+    button {
+        @apply bg-secondary text-white;
+
+        &:hover {
+            @apply bg-secondary-dark;
+        }
+    }
+}
+
+:host[color='success'] {
+    button {
+        @apply bg-green-700 text-white;
+
+        &:hover {
+            @apply bg-green-800;
+        }
+    }
+}
+
+:host[color='danger'] {
+    button {
+        @apply bg-red-700 text-white;
+
+        &:hover {
+            @apply bg-red-800;
+        }
+    }
+}
+
+:host[color='warning'] {
+    button {
+        @apply bg-yellow-700 text-white;
+
+        &:hover {
+            @apply bg-yellow-800;
+        }
+    }
+}
+
+:host[color='default'] {
+    button {
+        @apply bg-gray-100;
+
+        &:hover {
+            @apply bg-gray-200;
+        }
+    }
+}
+
+//End of Color
+//Start of Size
+:host[size='extra-small'] {
+    button {
+        @apply py-1 px-2 rounded-md text-xs;
+    }
+}
+
+:host[size='small'] {
+    button {
+        @apply py-2 px-4 rounded-md;
+    }
+}
+
+:host[size='medium'] {
+    button {
+        @apply py-4 px-8 rounded-md;
+    }
+}
+
+:host[size='large'] {
+    button {
+        @apply py-6 px-10 rounded-lg;
+    }
+}
+
+:host[size='extra-large'] {
+    button {
+        @apply py-8 px-12 rounded-xl;
+    }
+} */
