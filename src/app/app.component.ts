@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +7,37 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ThanOS';
+
+  loading = true;
+
+  glove: string = 'infinity'
+  snap: string = 'hide'
+
+  constructor(private cd: ChangeDetectorRef) {
+  }
+
+  ngAfterViewInit() {
+    this.load()
+  }
+
+  ngAfterViewChecked() {
+    this.cd.detectChanges();
+  }
+
+  load() {
+    if (this.loading) {
+      let audio = new Audio();
+      audio.src = "../assets/audio/thanos_snap_sound.mp3";
+      audio.load();
+      audio.play();
+      this.glove = 'hide';
+      this.snap = 'snap';
+
+      setTimeout(() => {
+        this.glove = 'infinity';
+        this.snap = "hide";
+        this.loading = false;
+      }, 2500)
+    }
+  }
 }

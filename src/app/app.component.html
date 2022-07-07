@@ -1,2 +1,16 @@
-<contextmenu></contextmenu>
-<taskbar></taskbar>
+<div class="wrapper">
+    <div class="loading-screen" *ngIf="loading">
+        <div class="loading-screen-content">
+            <div class="glow-div">
+                <img [ngClass]="glove" src="../assets/img/thanos_idle.png" />
+                <div [ngClass]="snap"></div>
+            </div>
+            <h1>ThanOS</h1>
+        </div>
+    </div>
+
+    <div class="main-content" *ngIf="!loading">
+        <contextmenu></contextmenu>
+        <taskbar></taskbar>
+    </div>
+</div>
