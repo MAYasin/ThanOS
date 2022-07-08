@@ -68,8 +68,9 @@
 
     .resize-action {
         position: absolute;
-        width: inherit;
-        height: inherit;
+        width: 10px;
+        height: 10px;
+        background-color: white;
 
         &:hover {
             cursor: nwse-resize;
