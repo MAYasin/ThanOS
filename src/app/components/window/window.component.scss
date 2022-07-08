@@ -1,32 +1,77 @@
-:host{
+:host {
     position: fixed;
     top: 0;
     left: 0;
-    //width: 0;
-    //height: 0;
+    width: 0;
+    height: 0;
 
-    .resizable-draggable {
-        border: 2px solid white;
+    .window {
         background-color: white;
-/*         &.active {
-            outline-style: solid;
-            background-color: #80ff800d;
-        } */
-    
-        &:hover {
-            cursor: all-scroll;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+
+        .window-topbar {
+            user-select: none;
+            width: 100%;
+            height: 35px;
+            background-color: rgba(54, 54, 54, 0.8);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            overflow: hidden;
+
+            .window-topbar-name {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                padding-left: 10px;
+
+                img {
+                    width: 20px;
+                    margin-right: 10px;
+                }
+
+                span {
+                    font-weight: 400;
+                    font-size: small;
+                }
+            }
+
+            .window-topbar-holder {
+                width: 100%;
+                height: 100%;
+            }
+
+            .window-topbar-control {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+
+                span {
+                    padding: 10px 15px 10px 15px;
+
+                    &:hover {
+                        background-color: rgba(255, 255, 255, 0.1);
+                    }
+                }
+            }
+        }
+
+        .window-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
         }
     }
-    
+
     .resize-action {
         position: absolute;
-        left: 100%;
-        top: 100%;
-        transform: translate3d(-50%, -50%, 0) rotateZ(45deg);
-        border-style: solid;
-        border-width: 8px;
-        border-color: white;
-        &:hover, &:active {
+        width: inherit;
+        height: inherit;
+
+        &:hover {
             cursor: nwse-resize;
         }
     }
