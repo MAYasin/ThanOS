@@ -3,7 +3,9 @@ const app = express();
 const path = require('path');
 const helmet = require('helmet');
 
-app.use(helmet());
+app.use(helmet({
+    frameguard: false,
+  }));
 
 app.use(express.static('./dist/than-os'));
 app.get('/*', function (req, res) {
