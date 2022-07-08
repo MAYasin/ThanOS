@@ -8,7 +8,7 @@ import { Component, ChangeDetectorRef } from '@angular/core';
 export class AppComponent {
   title = 'ThanOS';
 
-  loading = true;
+  loading = false;
 
   glove: string = 'infinity'
   snap: string = 'hide'

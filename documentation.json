@@ -9,7 +9,7 @@
     "components": [
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-e02b45992615117245f874b874b96ea74189e3269402e9806a2921ec5491e6dbd0400a8a2d597850338a7c0fe54ea6f065ef7c1644ea2ed8f9b57cf7c9308c64",
+            "id": "component-AppComponent-aac56b99e209e31c981e45a3ec66921bf60839f4b9ac60d873bf63cc06d7c5a5a60c689594c1be4736714e615ede56681daf50321a6502299908f59b66b72fb9",
             "file": "src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -29,6 +29,36 @@
             "outputsClass": [],
             "propertiesClass": [
                 {
+                    "name": "glove",
+                    "defaultValue": "'infinity'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 13
+                },
+                {
+                    "name": "loading",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 11
+                },
+                {
+                    "name": "snap",
+                    "defaultValue": "'hide'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 14
+                },
+                {
                     "name": "title",
                     "defaultValue": "'ThanOS'",
                     "deprecated": false,
@@ -39,7 +69,38 @@
                     "line": 9
                 }
             ],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "load",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 27,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngAfterViewChecked",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 23,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 19,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -47,16 +108,42 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss']\n})\nexport class AppComponent {\n  title = 'ThanOS';\n}\n",
+            "sourceCode": "import { Component, ChangeDetectorRef } from '@angular/core';\n\n@Component({\n  selector: 'app-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss']\n})\nexport class AppComponent {\n  title = 'ThanOS';\n\n  loading = false;\n\n  glove: string = 'infinity'\n  snap: string = 'hide'\n\n  constructor(private cd: ChangeDetectorRef) {\n  }\n\n  ngAfterViewInit() {\n    this.load()\n  }\n\n  ngAfterViewChecked() {\n    this.cd.detectChanges();\n  }\n\n  load() {\n    if (this.loading) {\n      let audio = new Audio();\n      audio.src = \"../assets/audio/thanos_snap_sound.mp3\";\n      audio.load();\n      audio.play();\n      this.glove = 'hide';\n      this.snap = 'snap';\n\n      setTimeout(() => {\n        this.glove = 'infinity';\n        this.snap = \"hide\";\n        this.loading = false;\n      }, 2500)\n    }\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "",
+                    "data": ".wrapper {\r\n    width: 100%;\r\n    height: 100vh;\r\n    display: flex;\r\n    flex-direction: row;\r\n    flex-wrap: wrap;\r\n\r\n    .loading-screen {\r\n        width: inherit;\r\n        height: inherit;\r\n        display: flex;\r\n        align-items: center;\r\n        justify-content: center;\r\n\r\n        .loading-screen-content {\r\n            display: flex;\r\n            justify-content: center;\r\n            align-items: center;\r\n\r\n            h1 {\r\n                user-select: none;\r\n                font-weight: 500;\r\n            }\r\n\r\n            .glow-div {\r\n                position: relative;\r\n                height: 80px;\r\n                width: 80px;\r\n\r\n                .hide {\r\n                    display: none;\r\n                }\r\n\r\n                .infinity {\r\n                    cursor: pointer;\r\n                    position: absolute;\r\n                    left: -12px;\r\n                    height: 80px;\r\n                    width: 80px;\r\n                    user-select: none;\r\n                    -moz-user-select: none;\r\n                }\r\n\r\n                .snap {\r\n                    position: absolute;\r\n                    top: 0;\r\n                    left: -12px;\r\n                    height: 80px;\r\n                    width: 80px;\r\n                    background-image: url('../assets/img/thanos_snap.png');\r\n                    background-position: left;\r\n                    background-repeat: no-repeat;\r\n                    animation: snaps 2s steps(47);\r\n                }\r\n\r\n                @keyframes snaps {\r\n                    from {\r\n                        background-position: left;\r\n                    }\r\n\r\n                    to {\r\n                        background-position: right;\r\n                    }\r\n                }\r\n            }\r\n        }\r\n    }\r\n\r\n    .main-content{\r\n        width: 100%;\r\n    }\r\n}",
                     "styleUrl": "./app.component.scss"
                 }
             ],
             "stylesData": "",
-            "templateData": "<contextmenu></contextmenu>"
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "cd",
+                        "type": "ChangeDetectorRef",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 14,
+                "jsdoctags": [
+                    {
+                        "name": "cd",
+                        "type": "ChangeDetectorRef",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "templateData": "<div class=\"wrapper\">\r\n    <div class=\"loading-screen\" *ngIf=\"loading\">\r\n        <div class=\"loading-screen-content\">\r\n            <div class=\"glow-div\">\r\n                <img [ngClass]=\"glove\" src=\"../assets/img/thanos_idle.png\" />\r\n                <div [ngClass]=\"snap\"></div>\r\n            </div>\r\n            <h1>ThanOS</h1>\r\n        </div>\r\n    </div>\r\n\r\n    <div class=\"main-content\" *ngIf=\"!loading\">\r\n        <contextmenu></contextmenu>\r\n        <window [width]=\"300\" [height]=\"150\" [left]=\"100\" [top]=\"100\">\r\n        </window>\r\n        <taskbar></taskbar>\r\n    </div>\r\n</div>"
         },
         {
             "name": "ContextmenuComponent",
@@ -102,7 +189,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".contextmenu {\r\n    width: fit-content;\r\n    width: 250px; //333px\r\n    //height: 281px; //375px\r\n    background-color: rgba(255, 255, 255, 0.50);\r\n    background-color: rgb(192, 192, 192);\r\n    border-radius: 10px;\r\n    padding: 5px;\r\n    overflow: hidden;\r\n\r\n    .contextmenu-item {\r\n        display: flex;\r\n        justify-content: start;\r\n        align-items: center;\r\n        padding: 5px;\r\n        border-radius: 10px;\r\n        background-color: transparent;\r\n\r\n        &:hover {\r\n            background-color: rgba(255, 255, 255, 0.19);\r\n        }\r\n\r\n        .contextmenu-icon {\r\n            margin-right: 10px;\r\n\r\n            .fa {\r\n                color: white;\r\n            }\r\n        }\r\n\r\n        .contextmenu-text {\r\n            font-size: medium;\r\n            font-weight: 400;\r\n        }\r\n    }\r\n}",
+                    "data": ":host {\r\n    width: max-content !important; //333px\r\n    //height: 281px; //375px\r\n\r\n    .contextmenu {\r\n        user-select: none;\r\n        width: 250px; //333px\r\n        //height: 281px; //375px\r\n        background-color: rgba(54, 54, 54, 0.8);\r\n        border-radius: 10px;\r\n        padding: 5px;\r\n        overflow: hidden;\r\n\r\n        .contextmenu-item {\r\n            display: flex;\r\n            justify-content: space-between;\r\n            align-items: center;\r\n            padding: 7px 0px 7px 7px;\r\n            border-radius: 5px;\r\n            background-color: transparent;\r\n\r\n            &:hover {\r\n                background-color: rgba(255, 255, 255, 0.1);\r\n            }\r\n\r\n            .contextmenu-dropdownicon {\r\n                width: 22px;\r\n                margin-left: 10px;\r\n\r\n                .fa {\r\n                    color: white;\r\n                }\r\n            }\r\n\r\n            .contextmenu-icon {\r\n                width: 22px;\r\n                margin-right: 10px;\r\n\r\n                .fa {\r\n                    color: white;\r\n                }\r\n            }\r\n\r\n            .contextmenu-text {\r\n                color: white;\r\n                font-size: medium;\r\n                font-weight: 400;\r\n            }\r\n        }\r\n    }\r\n}",
                     "styleUrl": "./contextmenu.component.scss"
                 }
             ],
@@ -118,7 +205,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<div class=\"contextmenu\">\n    <div class=\"contextmenu-item\">\n        <span class=\"contextmenu-icon\"><i class=\"fa fa-rotate-right\"></i></span>\n        <span class=\"contextmenu-text\">View</span>\n    </div>\n    <div class=\"contextmenu-item\">\n        <span class=\"contextmenu-icon\"><i class=\"fa fa-rotate-right\"></i></span>\n        <span class=\"contextmenu-text\">Sort By</span>\n    </div>\n    <div class=\"contextmenu-item\">\n        <span class=\"contextmenu-icon\"><img src=\"src\\assets\\icons\\rotate-right.svg\" alt=\"\"></span>\n        <span class=\"contextmenu-text\">Refresh</span>\n    </div>\n    <div class=\"contextmenu-item\">\n        <span class=\"contextmenu-icon\"><i class=\"fa fa-rotate-right\"></i></span>\n        <span class=\"contextmenu-text\">New</span>\n    </div>\n    <div class=\"contextmenu-item\">\n        <span class=\"contextmenu-icon\"><i class=\"fa fa-rotate-right\"></i></span>\n        <span class=\"contextmenu-text\">Display Settings</span>\n    </div>\n    <div class=\"contextmenu-item\">\n        <span class=\"contextmenu-icon\"><i class=\"fa fa-rotate-right\"></i></span>\n        <span class=\"contextmenu-text\">Personalise</span>\n    </div>\n    <div class=\"contextmenu-item\">\n        <span class=\"contextmenu-icon\"><i class=\"fa fa-rotate-right\"></i></span>\n        <span class=\"contextmenu-text\">Open in Terminal</span>\n    </div>\n    <div class=\"contextmenu-item\">\n        <span class=\"contextmenu-icon\"><i class=\"fa fa-rotate-right\"></i></span>\n        <span class=\"contextmenu-text\">Show more Options</span>\n    </div>\n</div>"
+            "templateData": "<div class=\"contextmenu\">\n    <div class=\"contextmenu-item\">\n        <div>\n            <span class=\"contextmenu-icon\"><i class=\"fa fa-th-large\"></i></span>\n            <span class=\"contextmenu-text\">View</span>\n        </div>\n        <span class=\"contextmenu-dropdownicon\"><i class=\"fa fa-chevron-right\"></i></span>\n    </div>\n    <div class=\"contextmenu-item\">\n        <div><span class=\"contextmenu-icon\"><i class=\"fa fa-sort\"></i></span>\n            <span class=\"contextmenu-text\">Sort By</span>\n        </div>\n        <span class=\"contextmenu-dropdownicon\"><i class=\"fa fa-chevron-right\"></i></span>\n    </div>\n    <div class=\"contextmenu-item\">\n        <div><span class=\"contextmenu-icon\"><i class=\"fa fa-rotate-right\"></i></span>\n            <span class=\"contextmenu-text\">Refresh</span>\n        </div>\n    </div>\n    <div class=\"contextmenu-item\">\n        <div><span class=\"contextmenu-icon\"><i class=\"fa fa-plus\"></i></span>\n            <span class=\"contextmenu-text\">New</span>\n        </div>\n        <span class=\"contextmenu-dropdownicon\"><i class=\"fa fa-chevron-right\"></i></span>\n    </div>\n    <div class=\"contextmenu-item\">\n        <div><span class=\"contextmenu-icon\"><i class=\"fa fa-cog\"></i></span>\n            <span class=\"contextmenu-text\">Display Settings</span>\n        </div>\n    </div>\n    <div class=\"contextmenu-item\">\n        <div><span class=\"contextmenu-icon\"><i class=\"fa fa-rotate-right\"></i></span>\n            <span class=\"contextmenu-text\">Personalise</span>\n        </div>\n    </div>\n    <div class=\"contextmenu-item\">\n        <div><span class=\"contextmenu-icon\"><i class=\"fa fa-rotate-right\"></i></span>\n            <span class=\"contextmenu-text\">Open in Terminal</span>\n        </div>\n    </div>\n    <div class=\"contextmenu-item\">\n        <div><span class=\"contextmenu-icon\"><i class=\"fa fa-paint-brush\"></i></span>\n            <span class=\"contextmenu-text\">Show more Options</span>\n        </div>\n    </div>\n</div>"
         },
         {
             "name": "PopupComponent",
@@ -227,18 +314,289 @@
                 "OnInit"
             ],
             "templateData": "<button> Button </button>"
+        },
+        {
+            "name": "TaskbarComponent",
+            "id": "component-TaskbarComponent-a5cb4f8cbd2146c1a4e9fd802e1eb2c4bdc1b3ee15ca7b3824e01859c7cbcf218fa9767708c36f181e244f4c3509b9108b24d4d2e1b0ca1060f000d7967ac3ba",
+            "file": "src/app/components/taskbar/taskbar.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "taskbar",
+            "styleUrls": [
+                "./taskbar.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./taskbar.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'taskbar',\n  templateUrl: './taskbar.component.html',\n  styleUrls: ['./taskbar.component.scss']\n})\nexport class TaskbarComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":host {\r\n    position: fixed;\r\n    bottom: 0;\r\n    width: 100%;\r\n    display: flex;\r\n\r\n    .taskbar {\r\n        user-select: none;\r\n        width: 100%;\r\n        height: 45px; //60px\r\n        padding: 2px;\r\n        background-color: rgba(54, 54, 54, 0.8);\r\n        display: flex;\r\n        justify-content: space-between;\r\n        align-items: center;\r\n        overflow: hidden;\r\n\r\n        .taskbar-items-left {\r\n            margin-left: 5px;\r\n            padding: 2px;\r\n            border-radius: 10px;\r\n\r\n            &:hover {\r\n                background-color: rgba(255, 255, 255, 0.1);\r\n            }\r\n        }\r\n\r\n        .taskbar-items-middle {\r\n            display: flex;\r\n            flex-direction: row;\r\n\r\n            .taskbar-tabs {\r\n                margin-left: 10px;\r\n                margin-right: 10px;\r\n\r\n                padding: 5px;\r\n                border-radius: 5px;\r\n\r\n                display: flex;\r\n                &:hover {\r\n                    background-color: rgba(255, 255, 255, 0.1);\r\n                }\r\n\r\n                img{\r\n                    object-fit: contain;\r\n                    width: 30px;\r\n                }\r\n            }\r\n        }\r\n\r\n        .taskbar-items-right{\r\n            img{\r\n                object-fit: contain;\r\n                width: 220px;\r\n            }\r\n        }\r\n    }\r\n}",
+                    "styleUrl": "./taskbar.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 8
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"taskbar\">\n    <div class=\"taskbar-items-left\">\n        <!-- <span>hi</span> -->\n    </div>\n    <div class=\"taskbar-items-middle\">\n        <div class=\"taskbar-tabs\">\n            <img src=\"../../../assets/icons/win11-home.png\" alt=\"home\">\n        </div>\n        <div class=\"taskbar-tabs\">\n            <img src=\"../../../assets/icons/search.png\" alt=\"home\">\n        </div>\n        <div class=\"taskbar-tabs\">\n            <img src=\"../../../assets/icons/taskview.png\" alt=\"home\">\n        </div>\n        <div class=\"taskbar-tabs\">\n            <img src=\"../../../assets/icons/folder.png\" alt=\"home\">\n        </div>\n    </div>\n    <div class=\"taskbar-items-right\">\n        <img src=\"../../../assets/img/rightside-temp.png\" alt=\"home\">\n    </div>\n</div>\n"
+        },
+        {
+            "name": "WindowComponent",
+            "id": "component-WindowComponent-9962f29711de800e12357a52fe303eb0cd05734b235267e6e7b534b9a03b8f612a3df251dd4cf0abf043ca00fc68cbdb63403b2f6537d29ddeea1492012f74ef",
+            "file": "src/app/components/window/window.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "window",
+            "styleUrls": [
+                "./window.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./window.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "height",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 10,
+                    "type": "number | undefined",
+                    "decorators": []
+                },
+                {
+                    "name": "left",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 11,
+                    "type": "number | undefined",
+                    "decorators": []
+                },
+                {
+                    "name": "top",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "number | undefined",
+                    "decorators": []
+                },
+                {
+                    "name": "width",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 9,
+                    "type": "number | undefined",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "boxSpec",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "optional": false,
+                    "description": "",
+                    "line": 14
+                },
+                {
+                    "name": "mouse",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "literal type | undefined",
+                    "optional": false,
+                    "description": "",
+                    "line": 13
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 18,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onChange",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 31,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onMouseMove",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "MouseEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 25,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "decorators": [
+                        {
+                            "name": "HostListener",
+                            "stringifiedArguments": "'window:mousemove', ['$event']"
+                        }
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "MouseEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [
+                {
+                    "name": "window:mousemove",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "MouseEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "argsDecorator": [
+                        "$event"
+                    ],
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 25
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, ElementRef, HostListener, Input, OnInit, Renderer2 } from '@angular/core';\n\n@Component({\n  selector: 'window',\n  templateUrl: './window.component.html',\n  styleUrls: ['./window.component.scss']\n})\nexport class WindowComponent implements OnInit {\n  @Input('width') public width: number | undefined;\n  @Input('height') public height: number | undefined;\n  @Input('left') public left: number | undefined;\n  @Input('top') public top: number | undefined;\n  mouse: { x: number; y: number; } | undefined;\n  boxSpec: any;\n\n  constructor(private el: ElementRef, private render: Renderer2) { }\n\n  ngOnInit(): void {\n    this.render.listen('window', 'load', () => {\n      this.boxSpec = this.el.nativeElement.getBoundingClientRect();\n    })\n  }\n\n  @HostListener('window:mousemove', ['$event'])\n  onMouseMove(event: MouseEvent) {\n    this.mouse = {\n      x: event.clientX,\n      y: event.clientY\n    }\n  }\n  onChange() {\n    if (this.mouse != undefined) {\n      this.width = this.mouse.x - this.boxSpec.left;\n      this.height = this.mouse.y - this.boxSpec.top;\n    }\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":host{\r\n    background-color: white;\r\n    border: 2px solid white;\r\n}",
+                    "styleUrl": "./window.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "el",
+                        "type": "ElementRef",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "render",
+                        "type": "Renderer2",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 14,
+                "jsdoctags": [
+                    {
+                        "name": "el",
+                        "type": "ElementRef",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "render",
+                        "type": "Renderer2",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"resizable-draggable\" [style.width.px]=\"width\" [style.height.px]=\"height\"\n    [style.transform]=\"'translate3d(' + left + 'px,' + top + 'px,' + '0px)'\">\n    <div class=\"resize-action\"></div>\n</div>"
         }
     ],
     "modules": [
         {
             "name": "AppModule",
-            "id": "module-AppModule-05876b5e07ecb32b76bd712551dbc321d0bdc0b6b7dee909e85728c3fdabc2052dd2043cf9c9117844cf0f8b8bc23dfb6686096f420bc67a093f9d93c24df750",
+            "id": "module-AppModule-7ee8ce27bba7c9e9aa3a8e9072befed4647edd72ef757fb05dad351744915ddf0bd180d52a26e9015eaf47081147ff2158f0b286d6a35f8a169e5bf9e4bbb00c",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\n\nimport { AppRoutingModule } from './app-routing.module';\nimport { AppComponent } from './app.component';\nimport { PopupComponent } from './components/popup/popup.component';\nimport { ContextmenuComponent } from './components/contextmenu/contextmenu.component';\n\n@NgModule({\n  declarations: [\n    AppComponent,\n    PopupComponent,\n    ContextmenuComponent\n  ],\n  imports: [\n    BrowserModule,\n    AppRoutingModule\n  ],\n  providers: [],\n  bootstrap: [AppComponent]\n})\nexport class AppModule { }\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\n\nimport { AppRoutingModule } from './app-routing.module';\nimport { AppComponent } from './app.component';\nimport { PopupComponent } from './components/popup/popup.component';\nimport { ContextmenuComponent } from './components/contextmenu/contextmenu.component';\nimport { TaskbarComponent } from './components/taskbar/taskbar.component';\nimport { WindowComponent } from './components/window/window.component';\n\n@NgModule({\n  declarations: [\n    AppComponent,\n    PopupComponent,\n    ContextmenuComponent,\n    TaskbarComponent,\n    WindowComponent\n  ],\n  imports: [\n    BrowserModule,\n    AppRoutingModule\n  ],\n  providers: [],\n  bootstrap: [AppComponent]\n})\nexport class AppModule { }\n",
             "children": [
                 {
                     "type": "providers",
@@ -255,6 +613,12 @@
                         },
                         {
                             "name": "PopupComponent"
+                        },
+                        {
+                            "name": "TaskbarComponent"
+                        },
+                        {
+                            "name": "WindowComponent"
                         }
                     ]
                 },
@@ -388,6 +752,26 @@
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "src/app/components/contextmenu/contextmenu.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "() => ({\r\n})"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/taskbar/taskbar.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "() => ({\r\n})"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/window/window.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -555,6 +939,30 @@
                     "type": "Story",
                     "defaultValue": "() => ({\r\n})"
                 }
+            ],
+            "src/app/components/taskbar/taskbar.stories.ts": [
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/taskbar/taskbar.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "() => ({\r\n})"
+                }
+            ],
+            "src/app/components/window/window.stories.ts": [
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/window/window.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "() => ({\r\n})"
+                }
             ]
         },
         "groupedFunctions": {},
@@ -585,7 +993,7 @@
                 "linktype": "component",
                 "name": "AppComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/2",
+                "coverageCount": "0/9",
                 "status": "low"
             },
             {
@@ -672,6 +1080,44 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/taskbar/taskbar.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TaskbarComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/taskbar/taskbar.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/window/window.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "WindowComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/12",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/window/window.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

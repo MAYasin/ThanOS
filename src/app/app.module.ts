@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { PopupComponent } from './components/popup/popup.component';
 import { ContextmenuComponent } from './components/contextmenu/contextmenu.component';
 import { TaskbarComponent } from './components/taskbar/taskbar.component';
+import { WindowComponent } from './components/window/window.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PopupComponent,
     ContextmenuComponent,
-    TaskbarComponent
+    TaskbarComponent,
+    WindowComponent
   ],
   imports: [
     BrowserModule,
