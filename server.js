@@ -1,9 +1,17 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const helmet = require('helmet')
+const cors = require('cors');
 
-app.use(helmet.frameguard({ action: 'deny' }));
+var allowCrossDomain = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+
+    next();
+}
+
+app.use(allowCrossDomain());
 
 app.use(express.static('./dist/than-os'));
 app.get('/*', function (req, res) {
