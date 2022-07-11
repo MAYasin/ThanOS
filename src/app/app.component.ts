@@ -1,4 +1,5 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
+import { SupabaseService } from './services/supabase/supabase.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ export class AppComponent {
   glove: string = 'infinity'
   snap: string = 'hide'
 
-  constructor(private cd: ChangeDetectorRef) {
+  constructor(private supabase: SupabaseService ,private cd: ChangeDetectorRef) {
   }
 
   ngAfterViewInit() {
@@ -39,5 +40,11 @@ export class AppComponent {
         this.loading = false;
       }, 2500)
     }
+  }
+
+  async getData() {
+    this.supabase.getAllObjects().then((data) => {
+      console.log(data);
+    });
   }
 }
