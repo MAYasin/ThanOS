@@ -1,0 +1,20 @@
+:host{
+    width: 0;
+    height: 0;
+
+    .desktop-item{
+        display: flex;
+        width: 70px;
+        height: 70px;
+        margin: 10px;
+        background-color: white;
+        
+        .desktop-item.img{
+
+        }
+
+        .desktop-item-title{
+            color: black;
+        }
+    }
+}

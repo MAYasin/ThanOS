@@ -11,10 +11,15 @@ export class AppComponent {
 
   loading = false;
 
-  glove: string = 'infinity'
-  snap: string = 'hide'
+  glove: string = 'infinity';
+  snap: string = 'hide';
+
+  desktopitems: any;
 
   constructor(private supabase: SupabaseService ,private cd: ChangeDetectorRef) {
+    this.supabase.getDesktop().then((response) => {
+      this.desktopitems = response.data;
+    });
   }
 
   ngAfterViewInit() {
@@ -40,11 +45,5 @@ export class AppComponent {
         this.loading = false;
       }, 2500)
     }
-  }
-
-  async getData() {
-    this.supabase.getAllObjects().then((data) => {
-      console.log(data);
-    });
   }
 }

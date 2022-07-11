@@ -11,8 +11,8 @@ export class SupabaseService {
   constructor() {
     this.supabaseClient = createClient(environment.supabaseUrl, environment.supabaseKey,{schema: 'storage'});
   }
-  async getAllObjects() {
-    const { data, error } = await this.supabaseClient.from('objects').select('*');
+  async getDesktop() {
+    const { data, error } = await this.supabaseClient.from('objects').select().ilike('name' ,'Users/Muhammad/Desktop/%');
     return { data, error };
   }
 }

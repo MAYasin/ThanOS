@@ -10,8 +10,11 @@
     </div>
 
     <div class="main-content" *ngIf="!loading">
-        <contextmenu></contextmenu>
-        <button (click)="getData()"> get</button>
+        <!-- <contextmenu></contextmenu>
+        <button (click)="getData()"> get</button> -->
+
+        <desktop-item *ngFor="let item of desktopitems" [data]="item"></desktop-item>
+
         <window [width]="1000" [height]="500" [left]="400" [top]="100">
         </window>
         <taskbar></taskbar>
