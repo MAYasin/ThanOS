@@ -1,0 +1,33 @@
+:host {
+    display: inline-flex;
+    margin: 5px;
+
+    .desktop-item {
+        user-select: none;
+        display: inline-flex;
+        width: 80px;
+        height: 70px;
+        padding: 2px 0px 2px 0px;
+        background-color: transparent;
+        border-radius: 3px;
+        white-space: nowrap;
+        flex-direction: column;
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+
+        .desktop-item-img {
+            align-self: center;
+            width: 50px;
+        }
+
+        .desktop-item-title {
+            font-size: 14px;
+            font-weight: 100;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            text-align: center;
+        }
+    }
+}

@@ -1,4 +1,5 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
+import { SupabaseService } from './services/supabase/supabase.service';
 
 @Component({
   selector: 'app-root',
@@ -10,10 +11,15 @@ export class AppComponent {
 
   loading = false;
 
-  glove: string = 'infinity'
-  snap: string = 'hide'
+  glove: string = 'infinity';
+  snap: string = 'hide';
 
-  constructor(private cd: ChangeDetectorRef) {
+  desktopitems: any;
+
+  constructor(private supabase: SupabaseService ,private cd: ChangeDetectorRef) {
+    this.supabase.getDesktop().then((response) => {
+      this.desktopitems = response.data;
+    });
   }
 
   ngAfterViewInit() {
