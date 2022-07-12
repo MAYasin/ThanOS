@@ -1,11 +1,9 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const helmet = require('helmet');
+const cors = require('cors');
 
-app.use(helmet({
-    frameguard: false,
-  }));
+app.use(cors());
 
 app.use(express.static('./dist/than-os'));
 app.get('/*', function (req, res) {
