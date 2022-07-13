@@ -9,6 +9,7 @@ import { ContextmenuComponent } from './components/contextmenu/contextmenu.compo
 import { TaskbarComponent } from './components/taskbar/taskbar.component';
 import { WindowComponent } from './components/window/window.component';
 import { SupabaseService } from './services/supabase/supabase.service';
+import { DraggableDirective } from './components/draggable/draggable.directive';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { SupabaseService } from './services/supabase/supabase.service';
     ContextmenuComponent,
     TaskbarComponent,
     WindowComponent,
-    DesktopItemComponent
+    DesktopItemComponent,
+    DraggableDirective
   ],
   imports: [
     BrowserModule,

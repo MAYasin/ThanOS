@@ -80,13 +80,13 @@ export class WindowComponent implements OnInit {
   }
 
   private move() {
-    if (this.moveCondMeet()) {
-      this.left = this.mouseClick.left + (this.mouse.x - this.mouseClick.x);
-      this.top = this.mouseClick.top + (this.mouse.y - this.mouseClick.y);
-    }
+    //if (this.moveCondMeet()) {
+    this.left = this.mouseClick.left + (this.mouse.x - this.mouseClick.x);
+    this.top = this.mouseClick.top + (this.mouse.y - this.mouseClick.y);
+    //}
   }
 
-  private moveCondMeet() {
+  /* private moveCondMeet() {
     const offsetLeft = this.mouseClick.x - this.boxPosition.left;
     const offsetRight = this.width - offsetLeft;
     const offsetTop = this.mouseClick.y - this.boxPosition.top;
@@ -97,5 +97,5 @@ export class WindowComponent implements OnInit {
       this.mouse.y > this.containerPos.top + offsetTop &&
       this.mouse.y < this.containerPos.bottom - offsetBottom
     );
-  }
+  } */
 }
