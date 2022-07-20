@@ -71,7 +71,7 @@ export class DraggableDirective {
     const dragStartSub = dragStart$.subscribe((event: MouseEvent) => {
       initialX = event.clientX - currentX;
       initialY = event.clientY - currentY;
-      this.element!.classList.add("free-dragging");
+      this.element!.classList.add("draggable");
 
       dragSub = drag$.subscribe((event: MouseEvent) => {
         event.preventDefault();
@@ -79,8 +79,8 @@ export class DraggableDirective {
         const x = event.clientX - initialX;
         const y = event.clientY - initialY;
 
-        currentX = Math.max(minBoundX, Math.min(x, maxBoundX));
-        currentY = Math.max(minBoundY, Math.min(y, maxBoundY));
+        currentX = x//Math.max(minBoundX, Math.min(x, maxBoundX));
+        currentY = y//Math.max(minBoundY, Math.min(y, maxBoundY));
 
         this.element!.style.transform =
           "translate3d(" + currentX + "px, " + currentY + "px, 0)";
@@ -90,7 +90,7 @@ export class DraggableDirective {
     const dragEndSub = dragEnd$.subscribe(() => {
       initialX = currentX;
       initialY = currentY;
-      this.element!.classList.remove("free-dragging");
+      this.element!.classList.remove("draggable");
       if (dragSub) {
         dragSub.unsubscribe();
       }

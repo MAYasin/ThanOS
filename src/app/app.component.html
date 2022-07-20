@@ -13,9 +13,9 @@
         <!-- <contextmenu></contextmenu>
         <button (click)="getData()"> get</button> -->
 
-        <desktop-item draggable *ngFor="let item of desktopitems" [data]="item"></desktop-item>
+        <desktop-item *ngFor="let item of desktopitems" [data]="item"></desktop-item>
 
-        <window [width]="1000" [height]="500" [left]="400" [top]="100">
+        <window draggable [width]="1000" [height]="500" [left]="400" [top]="100">
         </window>
         <taskbar></taskbar>
     </div>
